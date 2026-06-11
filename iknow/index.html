@@ -30,29 +30,31 @@
         .player {
             width: 240px;
             height: 320px;
-            padding: 10px 8px;
+            padding: 8px 10px;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
         /* Header */
         .header {
             text-align: center;
-            padding: 2px 0 6px;
+            padding: 2px 0 4px;
+            width: 100%;
         }
 
         .header h1 {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #e94560;
         }
 
-        /* Album Art */
+        /* Album Art - Smaller */
         .album-art {
-            width: 120px;
-            height: 120px;
+            width: 105px;
+            height: 105px;
             margin: 2px auto;
             background: linear-gradient(135deg, #2d2d44 0%, #1a1a2e 100%);
             border-radius: 8px;
@@ -79,8 +81,8 @@
         }
 
         .album-icon {
-            width: 50px;
-            height: 50px;
+            width: 42px;
+            height: 42px;
             z-index: 1;
             fill: #e94560;
         }
@@ -89,10 +91,11 @@
         .track-info {
             text-align: center;
             padding: 2px 0;
+            width: 100%;
         }
 
         .track-title {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             white-space: nowrap;
             overflow: hidden;
@@ -106,7 +109,8 @@
 
         /* Progress Section */
         .progress-section {
-            padding: 4px 0 2px;
+            padding: 3px 0 2px;
+            width: 100%;
         }
 
         .time-display {
@@ -120,12 +124,11 @@
 
         .progress-container {
             width: 100%;
-            height: 8px;
+            height: 7px;
             background: rgba(255, 255, 255, 0.15);
             border-radius: 4px;
             cursor: pointer;
             position: relative;
-            overflow: visible;
         }
 
         .progress-bar {
@@ -139,23 +142,23 @@
 
         .progress-thumb {
             position: absolute;
-            right: -6px;
+            right: -5px;
             top: 50%;
             transform: translateY(-50%);
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             background: #fff;
             border-radius: 50%;
-            box-shadow: 0 0 6px rgba(233, 69, 96, 0.8);
+            box-shadow: 0 0 5px rgba(233, 69, 96, 0.8);
         }
 
-        /* Controls */
+        /* Controls - Play Button Smaller & Perfect */
         .controls {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 12px;
-            padding: 6px 0;
+            gap: 14px;
+            padding: 5px 0;
         }
 
         .btn {
@@ -163,10 +166,12 @@
             background: transparent;
             color: #aaa;
             cursor: pointer;
-            padding: 10px;
+            padding: 9px;
             border-radius: 50%;
             outline: none;
-            -webkit-tap-highlight-color: rgba(233, 69, 96, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .btn:active {
@@ -175,19 +180,21 @@
         }
 
         .btn svg {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             fill: currentColor;
             display: block;
         }
 
+        /* Perfect Play Button - Smaller */
         .btn-play {
-            width: 56px;
-            height: 56px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(145deg, #e94560, #c73e54);
             color: #fff;
-            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.5);
+            box-shadow: 0 3px 12px rgba(233, 69, 96, 0.5);
             padding: 0;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -195,24 +202,30 @@
 
         .btn-play:active {
             transform: scale(0.92);
-            box-shadow: 0 2px 10px rgba(233, 69, 96, 0.6);
+            box-shadow: 0 2px 8px rgba(233, 69, 96, 0.6);
         }
 
+        /* Perfect centered icon */
         .btn-play svg {
-            width: 26px;
-            height: 26px;
+            width: 22px;
+            height: 22px;
+            fill: #fff;
+            display: block;
+            /* Ensure perfect centering */
+            position: relative;
+            left: 2px; /* Fine-tune for visual center */
         }
 
         .btn.active {
             color: #e94560;
         }
 
-        /* Options Row */
+        /* Options Row - Keep Same Size */
         .options {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            padding: 4px 0;
+            gap: 24px;
+            padding: 3px 0;
         }
 
         .option-btn {
@@ -224,7 +237,7 @@
             background: transparent;
             color: #777;
             cursor: pointer;
-            padding: 6px 10px;
+            padding: 5px 12px;
             border-radius: 6px;
             outline: none;
         }
@@ -244,39 +257,43 @@
         }
 
         .option-btn span {
-            font-size: 8px;
+            font-size: 9px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        /* Volume Section - Moved Up */
+        /* Volume Section - Moved Up More */
         .volume-section {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 4px 0 2px;
+            padding: 2px 0;
+            width: 100%;
         }
 
         .vol-btn {
             border: none;
             background: transparent;
             cursor: pointer;
-            padding: 4px;
+            padding: 2px;
             flex-shrink: 0;
             outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .vol-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: #888;
             display: block;
         }
 
         .volume-slider {
             flex: 1;
-            height: 6px;
+            height: 5px;
             -webkit-appearance: none;
             appearance: none;
             background: rgba(255, 255, 255, 0.15);
@@ -288,17 +305,17 @@
         .volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             background: #e94560;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
 
         .volume-slider::-moz-range-thumb {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             background: #e94560;
             border-radius: 50%;
             cursor: pointer;
@@ -322,7 +339,7 @@
             <h1>Music Player</h1>
         </div>
 
-        <!-- Album Art -->
+        <!-- Album Art - Smaller -->
         <div class="album-art" id="albumArt">
             <svg class="album-icon" viewBox="0 0 24 24">
                 <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
@@ -348,7 +365,7 @@
             </div>
         </div>
 
-        <!-- Main Controls -->
+        <!-- Main Controls - Perfect Small Play Button -->
         <div class="controls">
             <button class="btn" id="prevBtn" type="button">
                 <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
@@ -361,7 +378,7 @@
             </button>
         </div>
 
-        <!-- Options -->
+        <!-- Options - Same Size -->
         <div class="options">
             <button class="option-btn" id="loopBtn" type="button">
                 <svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
@@ -373,7 +390,7 @@
             </button>
         </div>
 
-        <!-- Volume - Now Visible! -->
+        <!-- Volume - Moved UP -->
         <div class="volume-section">
             <button class="vol-btn" id="volBtn" type="button">
                 <svg viewBox="0 0 24 24" id="volIcon">
@@ -440,6 +457,7 @@
             try {
                 if (isPlaying) {
                     audio.pause();
+                    // Play triangle icon
                     playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
                     albumArt.classList.remove('playing');
                     statusEl.textContent = 'Paused';
@@ -448,19 +466,18 @@
                     var promise = audio.play();
                     if (promise !== undefined) {
                         promise.then(function() {
+                            // Pause bars icon - perfectly centered
                             playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
                             albumArt.classList.add('playing');
                             statusEl.textContent = 'Playing';
                             isPlaying = true;
                         }).catch(function(error) {
                             statusEl.textContent = 'Tap to play';
-                            console.log('Play error:', error);
                         });
                     }
                 }
             } catch(err) {
                 statusEl.textContent = 'Error';
-                console.log('Error:', err);
             }
         }
 
@@ -520,20 +537,15 @@
             }
         }
 
-        // Event Listeners - Using multiple event types for mobile compatibility
+        // Event Listeners
         
-        // Play/Pause button - Multiple event listeners for reliability
+        // Play/Pause button - Multiple events for mobile
         playBtn.addEventListener('click', togglePlay);
         playBtn.addEventListener('touchend', function(e) {
             e.preventDefault();
             togglePlay();
         });
         
-        // Also handle touchstart as backup
-        playBtn.addEventListener('touchstart', function(e) {
-            // Don't prevent default here, let touchend handle it
-        });
-
         // Progress bar events
         progressContainer.addEventListener('click', handleProgressClick);
         progressContainer.addEventListener('touchend', handleProgressClick);
