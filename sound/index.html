@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=240, height=280, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gleam Music Player</title>
+    <title>Music Player</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +17,7 @@
 
         html, body {
             width: 240px;
-            height: 280px; /* Smaller for KaiOS */
+            height: 280px;
             overflow: hidden;
             background: #0a0a0f;
         }
@@ -38,7 +38,7 @@
         }
 
         /* Focus style for KaiOS D-pad */
-       .btn:focus,.option-btn:focus,.vol-btn:focus {
+       .btn:focus,.option-btn:focus,.vol-btn:focus,.volume-slider:focus {
             outline: 2px solid #e94560;
             background: rgba(233, 69, 96, 0.2);
         }
@@ -309,7 +309,7 @@
 <body>
     <div class="player">
         <div class="header">
-            <h1>Gleam Music</h1>
+            <h1>Music Player</h1>
         </div>
 
         <div class="album-art" id="albumArt">
@@ -376,8 +376,8 @@
         // Playlist - Add more songs here
         var playlist = [
             {title: "I Know", artist: "Track 1", src: "https://archivefiles.github.io/sounds/iknow/Iknow.mp3"},
-            {title: "Summer Vibes", artist: "Track 2", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"},
-            {title: "Night Drive", artist: "Track 3", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"}
+            {title: "Challeng", artist: "Track 2", src: "https://archivefiles.github.io/sounds/list/challenge.mp3"},
+            {title: "Stars", artist: "Track 3", src: "https://archivefiles.github.io/sounds/list/stars.mp3"}
         ];
 
         var currentTrack = 0;
@@ -470,10 +470,10 @@
             if (audio.duration) audio.currentTime = pos * audio.duration;
         }
 
-        // KaiOS D-pad + Center key support
+        // KaiOS D-pad + Center key + Cursor Click support
         document.addEventListener('keydown', function(e) {
             switch(e.key) {
-                case 'Enter': // Center/OK
+                case 'Enter': // Center/OK - works for pause too
                     e.preventDefault();
                     togglePlay();
                     break;
@@ -524,14 +524,14 @@
             }
         }
 
-        // Event Listeners
-        playBtn.addEventListener('click', togglePlay);
-        nextBtn.addEventListener('click', nextTrack);
-        prevBtn.addEventListener('click', prevTrack);
-        loopBtn.addEventListener('click', toggleLoop);
-        shuffleBtn.addEventListener('click', toggleShuffle);
-        progressContainer.addEventListener('click', handleProgressClick);
-        volumeSlider.addEventListener('input', changeVolume);
+        // Event Listeners - Fixed for KaiOS cursor click
+        playBtn.onclick = togglePlay; // Direct onclick works better on KaiOS
+        nextBtn.onclick = nextTrack;
+        prevBtn.onclick = prevTrack;
+        loopBtn.onclick = toggleLoop;
+        shuffleBtn.onclick = toggleShuffle;
+        progressContainer.onclick = handleProgressClick;
+        volumeSlider.oninput = changeVolume;
 
         audio.addEventListener('timeupdate', updateProgress);
         audio.addEventListener('loadedmetadata', function() {
@@ -540,6 +540,14 @@
         });
         audio.addEventListener('ended', function() {
             if (!audio.loop) nextTrack();
+        });
+        audio.addEventListener('pause', function() {
+            isPlaying = false;
+            playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+            albumArt.classList.remove('playing');
+        });
+        audio.addEventListener('play', function() {
+            isPlaying = true;
         });
 
         // Init
